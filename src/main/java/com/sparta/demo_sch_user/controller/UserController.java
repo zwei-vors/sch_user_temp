@@ -4,14 +4,14 @@ import com.sparta.demo_sch_user.dto.UserRequestDto;
 import com.sparta.demo_sch_user.dto.UserResponseDto;
 import com.sparta.demo_sch_user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/users")
+@RestController
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -31,5 +31,11 @@ public class UserController {
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok().body("정상적으로 삭제되었습니다.");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody UserRequestDto userRequestDto) {
+        userService.loginUser(userRequestDto);
+        return ResponseEntity.ok().body("정상적으로 로그인되었습니다.");
     }
 }

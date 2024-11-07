@@ -9,15 +9,15 @@ import java.time.LocalDateTime;
 public class ScheduleResponseDto {
 
     private Long id;
-    private String writer;
+    private Long userId;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
-    public ScheduleResponseDto(Long id, String writer, String title, String description, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public ScheduleResponseDto(Long id, Long userId, String title, String description, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.id = id;
-        this.writer = writer;
+        this.userId = userId;
         this.title = title;
         this.description = description;
         this.createdAt = createdAt;
@@ -27,7 +27,7 @@ public class ScheduleResponseDto {
     public static ScheduleResponseDto toDto(Schedule schedule) {
         return new ScheduleResponseDto(
                 schedule.getId(),
-                schedule.getWriter(),
+                schedule.getUser().getId(),
                 schedule.getTitle(),
                 schedule.getDescription(),
                 schedule.getCreatedAt(),

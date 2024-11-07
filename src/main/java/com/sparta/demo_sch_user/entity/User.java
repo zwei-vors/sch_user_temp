@@ -1,9 +1,6 @@
 package com.sparta.demo_sch_user.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -13,15 +10,19 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String writerName;
     private String email;
+    private String password;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
     public User() {}
 
-    public User(String writerName, String email) {
-
+    public User(String writerName, String email, String password) {
+        this.writerName = writerName;
+        this.email = email;
+        this.password = password;
     }
 }

@@ -3,6 +3,7 @@ package com.sparta.demo_sch_user.service;
 import com.sparta.demo_sch_user.dto.ScheduleRequestDto;
 import com.sparta.demo_sch_user.dto.ScheduleResponseDto;
 import com.sparta.demo_sch_user.entity.Schedule;
+import com.sparta.demo_sch_user.entity.User;
 import com.sparta.demo_sch_user.repository.ScheduleRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
+    private final UserService userService;
 
     public List<ScheduleResponseDto> findAll() {
         List<Schedule> schedules = scheduleRepository.findAll();
@@ -38,7 +40,10 @@ public class ScheduleService {
 
     @Transactional
     public ScheduleResponseDto createSchedule(ScheduleRequestDto requestDto) {
-        Schedule savedSchedule = scheduleRepository.save(requestDto.toEntity());
+        User user = userService.findUserById(requestDto.getUserId());
+        Schedule schedule = new Schedule(user, requestDto.getTitle(), requestDto.getDescription());
+
+        Schedule savedSchedule = scheduleRepository.save(schedule);
         return ScheduleResponseDto.toDto(savedSchedule);
     }
 
@@ -50,7 +55,7 @@ public class ScheduleService {
     @Transactional
     public ScheduleResponseDto update(Long id, ScheduleRequestDto scheduleRequestDto) {
         Schedule schedule = findScheduleById(id);
-        schedule.update(scheduleRequestDto.getWriter(), scheduleRequestDto.getTitle(), scheduleRequestDto.getDescription());
+        schedule.update(scheduleRequestDto.getTitle(), scheduleRequestDto.getDescription());
         return ScheduleResponseDto.toDto(schedule);
     }
 }

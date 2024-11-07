@@ -1,9 +1,6 @@
 package com.sparta.demo_sch_user.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -15,14 +12,17 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String writer;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
-    public Schedule(String writer, String title, String description) {
-        this.writer = writer;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private User user;
+
+    public Schedule(User user, String title, String description) {
+        this.user = user;
         this.title = title;
         this.description = description;
     }
@@ -31,8 +31,7 @@ public class Schedule {
 
     }
 
-    public void update(String writer, String title, String description) {
-        this.writer = writer;
+    public void update(String title, String description) {
         this.title = title;
         this.description = description;
     }
