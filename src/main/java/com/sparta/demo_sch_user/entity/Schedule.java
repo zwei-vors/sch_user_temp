@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 public class Schedule {
     // 작성 유저명, 할일 제목, 할일 내용, 작성일, 수정일
+    // TODO: BaseEntity 추가 필요
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
