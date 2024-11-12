@@ -38,9 +38,9 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody UserRequestDto userRequestDto, HttpServletRequest request) {
-        User LoginedUser = userService.loginUser(userRequestDto);
+        User loginedUser = userService.loginUser(userRequestDto);
         HttpSession session = request.getSession();
-        session.setAttribute("SESSION_KEY", LoginedUser.getId());
+        session.setAttribute("SESSION_KEY", loginedUser.getId());
         System.out.println("loginUser session : " + session);
 
         return ResponseEntity.ok().body("정상적으로 로그인되었습니다.");
