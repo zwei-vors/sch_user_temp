@@ -2,7 +2,6 @@ package com.sparta.demo_sch_user.service;
 
 import com.sparta.demo_sch_user.dto.ScheduleRequestDto;
 import com.sparta.demo_sch_user.dto.ScheduleResponseDto;
-import com.sparta.demo_sch_user.dto.ScheduleResponsePageDto;
 import com.sparta.demo_sch_user.entity.Schedule;
 import com.sparta.demo_sch_user.entity.User;
 import com.sparta.demo_sch_user.repository.ScheduleRepository;
