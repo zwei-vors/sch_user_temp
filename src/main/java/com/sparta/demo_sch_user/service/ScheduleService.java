@@ -24,7 +24,6 @@ public class ScheduleService {
 
         return schedules
                 .stream()
-                .sorted(Comparator.comparing(Schedule::getCreatedAt).reversed())
                 .map(ScheduleResponseDto::toDto)
                 .toList();
     }
