@@ -1,5 +1,6 @@
 package com.sparta.demo_sch_user.controller;
 
+import com.sparta.demo_sch_user.dto.LoginRequestDto;
 import com.sparta.demo_sch_user.dto.UserRequestDto;
 import com.sparta.demo_sch_user.dto.UserResponseDto;
 import com.sparta.demo_sch_user.entity.User;
@@ -37,8 +38,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody UserRequestDto userRequestDto, HttpServletRequest request) {
-        User loginedUser = userService.loginUser(userRequestDto);
+    public ResponseEntity<String> loginUser(@RequestBody LoginRequestDto loginRequestDto, HttpServletRequest request) {
+        User loginedUser = userService.loginUser(loginRequestDto);
         HttpSession session = request.getSession();
         session.setAttribute("SESSION_KEY", loginedUser.getId());
         System.out.println("loginUser session : " + session);

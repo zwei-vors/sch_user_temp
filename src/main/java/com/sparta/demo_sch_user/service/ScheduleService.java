@@ -2,6 +2,7 @@ package com.sparta.demo_sch_user.service;
 
 import com.sparta.demo_sch_user.dto.ScheduleRequestDto;
 import com.sparta.demo_sch_user.dto.ScheduleResponseDto;
+import com.sparta.demo_sch_user.dto.ScheduleUpdateRequestDto;
 import com.sparta.demo_sch_user.entity.Schedule;
 import com.sparta.demo_sch_user.entity.User;
 import com.sparta.demo_sch_user.repository.ScheduleRepository;
@@ -9,7 +10,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -52,7 +52,7 @@ public class ScheduleService {
     }
 
     @Transactional
-    public ScheduleResponseDto update(Long id, ScheduleRequestDto scheduleRequestDto) {
+    public ScheduleResponseDto update(Long id, ScheduleUpdateRequestDto scheduleRequestDto) {
         Schedule schedule = findScheduleById(id);
         schedule.update(scheduleRequestDto.getTitle(), scheduleRequestDto.getDescription());
         return ScheduleResponseDto.toDto(schedule);

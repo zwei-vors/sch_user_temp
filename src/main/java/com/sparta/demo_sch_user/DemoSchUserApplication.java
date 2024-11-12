@@ -11,9 +11,4 @@ public class DemoSchUserApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoSchUserApplication.class, args);
     }
-
-    // 유저
-        // 저장, 조회, 삭제
-        // 작성 유저명, 이메일, 작성일, 수정일
-        // 일정은 작성 유저명 대신 고유 식별자를 갖는다.
 }

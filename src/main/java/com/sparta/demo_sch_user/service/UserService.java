@@ -1,5 +1,6 @@
 package com.sparta.demo_sch_user.service;
 
+import com.sparta.demo_sch_user.dto.LoginRequestDto;
 import com.sparta.demo_sch_user.dto.UserRequestDto;
 import com.sparta.demo_sch_user.dto.UserResponseDto;
 import com.sparta.demo_sch_user.entity.User;
@@ -41,9 +42,9 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
     }
 
-    public User loginUser(UserRequestDto userRequestDto) {
-        User user = userRepository.findByEmail(userRequestDto.getEmail());
-        if (user == null || !Objects.equals(user.getPassword(), userRequestDto.getPassword())) {
+    public User loginUser(LoginRequestDto loginRequestDto) {
+        User user = userRepository.findByEmail(loginRequestDto.getEmail());
+        if (user == null || !Objects.equals(user.getPassword(), loginRequestDto.getPassword())) {
             throw new IllegalArgumentException("유효하지 않은 사용자 이름 혹은 잘못된 비밀번호");
         }
         return user;
