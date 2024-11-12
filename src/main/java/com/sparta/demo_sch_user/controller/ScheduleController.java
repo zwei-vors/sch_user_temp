@@ -2,10 +2,8 @@ package com.sparta.demo_sch_user.controller;
 
 import com.sparta.demo_sch_user.dto.ScheduleRequestDto;
 import com.sparta.demo_sch_user.dto.ScheduleResponseDto;
-import com.sparta.demo_sch_user.dto.ScheduleResponsePageDto;
 import com.sparta.demo_sch_user.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,13 +41,5 @@ public class ScheduleController {
     public ResponseEntity<ScheduleResponseDto> updateSchedule(@RequestBody ScheduleRequestDto scheduleRequestDto,
                                                               @PathVariable Long id) {
         return ResponseEntity.ok().body(scheduleService.update(id, scheduleRequestDto));
-    }
-
-    @GetMapping("/schedules/page")
-    public ResponseEntity<Page<ScheduleResponsePageDto>> getSchedules(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        Page<ScheduleResponsePageDto> schedules = scheduleService.getSchedules(page, size);
-        return ResponseEntity.ok(schedules);
     }
 }

@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 @Getter
 public class ScheduleResponseDto {
 
-    private Long id;
-    private Long userId;
-    private String title;
-    private String description;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
+    private final Long id;
+    private final Long userId;
+    private final String title;
+    private final String description;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime modifiedAt;
 
     public ScheduleResponseDto(Long id, Long userId, String title, String description, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.id = id;

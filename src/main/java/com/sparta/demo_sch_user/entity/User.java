@@ -3,11 +3,9 @@ package com.sparta.demo_sch_user.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -15,8 +13,6 @@ public class User {
     private String writerName;
     private String email;
     private String password;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
 
     public User() {}
 

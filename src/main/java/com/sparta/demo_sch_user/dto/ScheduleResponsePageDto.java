@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 
 @Getter
 public class ScheduleResponsePageDto {
-    private String title;
-    private String description;
-    private int commentCount;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
-    private String writerName;
+    private final String title;
+    private final String description;
+    private final int commentCount;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime modifiedAt;
+    private final String writerName;
 
     public ScheduleResponsePageDto(String title, String description, int commentCount, LocalDateTime createdAt, LocalDateTime modifiedAt, String writerName) {
         this.title = title;

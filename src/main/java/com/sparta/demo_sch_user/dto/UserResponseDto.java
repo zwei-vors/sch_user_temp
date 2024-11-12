@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 
 @Getter
 public class UserResponseDto {
-    private Long id;
-    private String writerName;
-    private String email;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
+    private final Long id;
+    private final String writerName;
+    private final String email;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime modifiedAt;
 
     public UserResponseDto(Long id, String writerName, String email, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.id = id;

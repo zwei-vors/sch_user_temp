@@ -3,23 +3,17 @@ package com.sparta.demo_sch_user.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
-public class Schedule {
-    // 작성 유저명, 할일 제목, 할일 내용, 작성일, 수정일
-    // TODO: BaseEntity 추가 필요
+public class Schedule extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Schedule(User user, String title, String description) {

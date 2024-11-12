@@ -5,9 +5,15 @@ import lombok.Getter;
 
 @Getter
 public class UserRequestDto {
-    private String writerName;
-    private String email;
-    private String password;
+    private final String writerName;
+    private final String email;
+    private final String password;
+
+    public UserRequestDto(String writerName, String email, String password) {
+        this.writerName = writerName;
+        this.email = email;
+        this.password = password;
+    }
 
     public User toEntity() {
         return new User(
